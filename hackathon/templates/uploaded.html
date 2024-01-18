@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Easy Rent - Landlord Profile</title>
+    <title>Easy Rent</title>
     <style>
       body {
         display: flex;
@@ -80,47 +80,6 @@
       <button id="logout-btn" onclick="logout()">Logout</button>
     </header>
 
-    <div class="content">
-      <h1>Landlord Profile</h1>
-
-      <form action="{% url 'landlord_update' %}" method="post">
-        {% csrf_token %}
-        <table>
-          <tr>
-            <th>Information</th>
-            <th>Input</th>
-          </tr>
-          <tr>
-            <td>Name</td>
-            <td><input type="text" name="name" required /></td>
-          </tr>
-          <tr>
-            <td>Phone</td>
-            <td><input type="text" name="phone" required /></td>
-          </tr>
-          <tr>
-            <td>Email</td>
-            <td><input type="text" name="email" required /></td>
-          </tr>
-          <tr>
-            <td>Property Address</td>
-            <td><input type="text" name="propertyAddress" required /></td>
-          </tr>
-          <tr>
-            <td>City</td>
-            <td><input type="text" name="city" required /></td>
-          </tr>
-        </table>
-
-        <button type="submit">Add Property</button>
-      </form>
-    </div>
-
-    <script>
-      function logout() {
-        alert("Logout clicked");
-        // Implement logout logic if needed
-      }
-    </script>
+    <h1>You have successfully uploaded your information.</h1>
   </body>
 </html>

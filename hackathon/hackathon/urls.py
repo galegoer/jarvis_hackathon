@@ -16,8 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from .views import index
+from .views import tPro
+from .views import upload_tenant_info
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', index, name="login"),
+    path('', tPro, name="tenant_info"),
+    path('upload_tenant_info/', upload_tenant_info, name="upload_tenant_info")
 ]
