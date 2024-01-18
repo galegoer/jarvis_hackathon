@@ -19,6 +19,15 @@ database = firebase.database()
 def index(request):
     return render(request, 'index.html')
 
+def options(request):
+    return render(request, 'options.html')
+
+def tPro(request):
+    return render(request, 'tPro.html')
+
+def lPro(request):
+    return render(request, 'lPro.html')
+
 def get_users(request):
     users = db.child("users").get()
     return render(request, 'users.html', {'users': users.val()})
