@@ -112,3 +112,21 @@ def upload_file(request):
         return JsonResponse({'status': 'File uploaded successfully', 'download_url': blob.public_url})
 
     return render(request, 'upload_file.html')
+def options(request):
+    return render(request, 'options.html')
+
+def tPro(request):
+    return render(request, 'tPro.html')
+
+def lPro(request):
+    return render(request, 'lPro.html')
+
+def tDash(request):
+    return render(request, 'tDash.html')
+
+def lDash(request):
+    return render(request, 'lDash.html') 
+
+def get_users(request):
+    users = db.child("users").get()
+    return render(request, 'users.html', {'users': users.val()})

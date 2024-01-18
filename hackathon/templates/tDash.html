@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Easy Rent - Tenant Dashboard</title>
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+        margin: 0;
+        background-color: #f4f4f4; /* Optional background color */
+        font-family: "Arial", sans-serif; /* Specify the font family */
+      }
+
+      header {
+        width: 100%;
+        background-color: #333; /* Bar background color */
+        color: #fff; /* Text color */
+        padding: 10px 20px;
+        box-sizing: border-box;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .site-name {
+        flex-grow: 1;
+        text-align: center;
+        font-size: 20px; /* Adjust the font size */
+      }
+
+      .header-button {
+        padding: 10px 15px;
+        border: none;
+        border-radius: 4px;
+        margin-left: 10px;
+        cursor: pointer;
+      }
+
+      .header-button.profile {
+        background-color: #3498db; /* Blue color, you can customize */
+        color: #fff;
+      }
+
+      .header-button.logout {
+        background-color: #e74c3c; /* Red color, you can customize */
+        color: #fff;
+      }
+
+      .content {
+        margin: 20px;
+      }
+
+      h1 {
+        font-size: 32px;
+        font-weight: bold;
+        margin-bottom: 20px;
+      }
+
+      form {
+        display: flex;
+        flex-direction: column;
+        max-width: 400px;
+      }
+
+      .form-group {
+        margin-bottom: 20px;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 10px;
+      }
+
+      .form-group input,
+      .form-group select {
+        width: 100%;
+        padding: 10px;
+        box-sizing: border-box;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+
+      .form-group button {
+        width: 100%;
+        padding: 12px;
+        box-sizing: border-box;
+        border: none;
+        border-radius: 4px;
+        background-color: #4caf50; /* Green color, you can customize */
+        color: #fff;
+        cursor: pointer;
+      }
+
+      .applied-properties {
+        margin-top: 20px;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+      }
+
+      th,
+      td {
+        padding: 15px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+      }
+
+      th {
+        background-color: #f2f2f2;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="site-name">Easy Rent</div>
+      <button class="header-button profile" onclick="goToProfile()">
+        Profile
+      </button>
+      <button class="header-button logout" onclick="logout()">Logout</button>
+    </header>
+
+    <div class="content">
+      <h1>Tenant Dashboard</h1>
+
+      <form action="/submit-property-application" method="post">
+        <div class="form-group">
+          <label for="propertyAddress">Property Address:</label>
+          <input
+            type="text"
+            id="propertyAddress"
+            name="propertyAddress"
+            required
+          />
+        </div>
+
+        <button type="submit" class="apply">Apply</button>
+      </form>
+
+      <div class="applied-properties">
+        <h2>Applied Properties</h2>
+        <table>
+          <tr>
+            <th>Property Address</th>
+            <th>Status</th>
+          </tr>
+          <!-- Example row, replace with actual data from the backend -->
+          <tr>
+            <td>123 Main St</td>
+            <td>Under Review</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <script>
+      function logout() {
+        alert("Logout clicked");
+        // Implement logout logic if needed
+      }
+
+      function goToProfile() {
+        alert("Go to Profile clicked");
+        // Implement logic to navigate to the profile page
+      }
+    </script>
+  </body>
+</html>

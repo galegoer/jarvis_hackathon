@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Easy Rent - Landlord Dashboard</title>
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+        margin: 0;
+        background-color: #f4f4f4; /* Optional background color */
+        font-family: "Arial", sans-serif; /* Specify the font family */
+      }
+
+      header {
+        width: 100%;
+        background-color: #333; /* Bar background color */
+        color: #fff; /* Text color */
+        padding: 10px 20px;
+        box-sizing: border-box;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .site-name {
+        flex-grow: 1;
+        text-align: center;
+        font-size: 20px; /* Adjust the font size */
+      }
+
+      .header-button {
+        padding: 10px 15px;
+        border: none;
+        border-radius: 4px;
+        margin-left: 10px;
+        cursor: pointer;
+      }
+
+      .header-button.profile {
+        background-color: #3498db; /* Blue color, you can customize */
+        color: #fff;
+      }
+
+      .header-button.logout {
+        background-color: #e74c3c; /* Red color, you can customize */
+        color: #fff;
+      }
+
+      .content {
+        margin: 20px;
+      }
+
+      h1 {
+        font-size: 32px;
+        font-weight: bold;
+        margin-bottom: 20px;
+      }
+
+      form {
+        max-width: 400px;
+      }
+
+      .form-group {
+        margin-bottom: 20px;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 10px;
+      }
+
+      .form-group select {
+        width: 100%;
+        padding: 10px;
+        box-sizing: border-box;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+
+      .tenant-info {
+        margin-top: 20px;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+      }
+
+      th,
+      td {
+        padding: 15px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+      }
+
+      th {
+        background-color: #f2f2f2;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="site-name">Easy Rent</div>
+      <button class="header-button profile" onclick="goToProfile()">
+        Profile
+      </button>
+      <button class="header-button logout" onclick="logout()">Logout</button>
+    </header>
+
+    <div class="content">
+      <h1>Landlord Dashboard</h1>
+
+      <form>
+        <div class="form-group">
+          <label for="propertyAddress">Property Address:</label>
+          <input
+            type="text"
+            id="propertyAddress"
+            name="propertyAddress"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="tenantDropdown">Select Tenant:</label>
+          <select
+            id="tenantDropdown"
+            name="tenantDropdown"
+            onchange="loadTenantInfo()"
+          >
+            <!-- Populate this with actual tenant names from your backend -->
+            <option value="tenant1">Tenant 1</option>
+            <option value="tenant2">Tenant 2</option>
+            <!-- Add more options as needed -->
+          </select>
+        </div>
+      </form>
+
+      <div class="tenant-info">
+        <h2>Tenant Information</h2>
+        <table id="tenantInfoTable">
+          <!-- Tenant information will be dynamically loaded here -->
+        </table>
+      </div>
+    </div>
+
+    <script>
+      function logout() {
+        alert("Logout clicked");
+        // Implement logout logic if needed
+      }
+
+      function goToProfile() {
+        alert("Go to Profile clicked");
+        // Implement logic to navigate to the profile page
+      }
+
+      function loadTenantInfo() {
+        // Fetch and load tenant information based on the selected tenant from the backend
+        // Replace the placeholder data with actual tenant information
+        const selectedTenant = document.getElementById("tenantDropdown").value;
+
+        const tenantInfoTable = document.getElementById("tenantInfoTable");
+        tenantInfoTable.innerHTML = `
+                <tr>
+                    <th>Name</th>
+                    <td>Tenant ${selectedTenant.charAt(
+                      selectedTenant.length - 1
+                    )}</td>
+                </tr>
+                <tr>
+                    <th>Current Address</th>
+                    <td>123 Main St</td>
+                </tr>
+                <tr>
+                    <th>City</th>
+                    <td>City ${selectedTenant.charAt(
+                      selectedTenant.length - 1
+                    )}</td>
+                </tr>
+                <tr>
+                    <th>Phone</th>
+                    <td>555-1234</td>
+                </tr>
+                <tr>
+                    <th>Email</th>
+                    <td>tenant${selectedTenant.charAt(
+                      selectedTenant.length - 1
+                    )}@example.com</td>
+                </tr>
+                <tr>
+                    <th>Criminal Record</th>
+                    <td>No</td>
+                </tr>
+                <tr>
+                    <th>Credit Score</th>
+                    <td>700</td>
+                </tr>
+                <tr>
+                    <th>Profession</th>
+                    <td>Professional</td>
+                </tr>
+                <tr>
+                    <th>Dependents</th>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <th>Pets</th>
+                    <td>No</td>
+                </tr>
+                <tr>
+                    <th>Number of Vehicles</th>
+                    <td>1</td>
+                </tr>
+            `;
+      }
+    </script>
+  </body>
+</html>
