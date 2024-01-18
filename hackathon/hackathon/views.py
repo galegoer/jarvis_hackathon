@@ -28,6 +28,12 @@ def tPro(request):
 def lPro(request):
     return render(request, 'lPro.html')
 
+def tDash(request):
+    return render(request, 'tDash.html')
+
+def lDash(request):
+    return render(request, 'lDash.html') 
+
 def get_users(request):
     users = db.child("users").get()
     return render(request, 'users.html', {'users': users.val()})

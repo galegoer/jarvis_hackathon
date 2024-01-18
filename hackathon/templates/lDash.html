@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Easy Rent - Tenant Dashboard</title>
+    <title>Easy Rent - Landlord Dashboard</title>
     <style>
       body {
         display: flex;
@@ -60,8 +60,6 @@
       }
 
       form {
-        display: flex;
-        flex-direction: column;
         max-width: 400px;
       }
 
@@ -74,7 +72,6 @@
         margin-bottom: 10px;
       }
 
-      .form-group input,
       .form-group select {
         width: 100%;
         padding: 10px;
@@ -83,18 +80,7 @@
         border-radius: 4px;
       }
 
-      .form-group button {
-        width: 100%;
-        padding: 12px;
-        box-sizing: border-box;
-        border: none;
-        border-radius: 4px;
-        background-color: #4caf50; /* Green color, you can customize */
-        color: #fff;
-        cursor: pointer;
-      }
-
-      .applied-properties {
+      .tenant-info {
         margin-top: 20px;
       }
 
@@ -126,9 +112,9 @@
     </header>
 
     <div class="content">
-      <h1>Tenant Dashboard</h1>
+      <h1>Landlord Dashboard</h1>
 
-      <form action="/submit-property-application" method="post">
+      <form>
         <div class="form-group">
           <label for="propertyAddress">Property Address:</label>
           <input
@@ -139,21 +125,25 @@
           />
         </div>
 
-        <button type="submit" class="apply">Apply</button>
+        <div class="form-group">
+          <label for="tenantDropdown">Select Tenant:</label>
+          <select
+            id="tenantDropdown"
+            name="tenantDropdown"
+            onchange="loadTenantInfo()"
+          >
+            <!-- Populate this with actual tenant names from your backend -->
+            <option value="tenant1">Tenant 1</option>
+            <option value="tenant2">Tenant 2</option>
+            <!-- Add more options as needed -->
+          </select>
+        </div>
       </form>
 
-      <div class="applied-properties">
-        <h2>Applied Properties</h2>
-        <table>
-          <tr>
-            <th>Property Address</th>
-            <th>Status</th>
-          </tr>
-          <!-- Example row, replace with actual data from the backend -->
-          <tr>
-            <td>123 Main St</td>
-            <td>Under Review</td>
-          </tr>
+      <div class="tenant-info">
+        <h2>Tenant Information</h2>
+        <table id="tenantInfoTable">
+          <!-- Tenant information will be dynamically loaded here -->
         </table>
       </div>
     </div>
@@ -167,6 +157,66 @@
       function goToProfile() {
         alert("Go to Profile clicked");
         // Implement logic to navigate to the profile page
+      }
+
+      function loadTenantInfo() {
+        // Fetch and load tenant information based on the selected tenant from the backend
+        // Replace the placeholder data with actual tenant information
+        const selectedTenant = document.getElementById("tenantDropdown").value;
+
+        const tenantInfoTable = document.getElementById("tenantInfoTable");
+        tenantInfoTable.innerHTML = `
+                <tr>
+                    <th>Name</th>
+                    <td>Tenant ${selectedTenant.charAt(
+                      selectedTenant.length - 1
+                    )}</td>
+                </tr>
+                <tr>
+                    <th>Current Address</th>
+                    <td>123 Main St</td>
+                </tr>
+                <tr>
+                    <th>City</th>
+                    <td>City ${selectedTenant.charAt(
+                      selectedTenant.length - 1
+                    )}</td>
+                </tr>
+                <tr>
+                    <th>Phone</th>
+                    <td>555-1234</td>
+                </tr>
+                <tr>
+                    <th>Email</th>
+                    <td>tenant${selectedTenant.charAt(
+                      selectedTenant.length - 1
+                    )}@example.com</td>
+                </tr>
+                <tr>
+                    <th>Criminal Record</th>
+                    <td>No</td>
+                </tr>
+                <tr>
+                    <th>Credit Score</th>
+                    <td>700</td>
+                </tr>
+                <tr>
+                    <th>Profession</th>
+                    <td>Professional</td>
+                </tr>
+                <tr>
+                    <th>Dependents</th>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <th>Pets</th>
+                    <td>No</td>
+                </tr>
+                <tr>
+                    <th>Number of Vehicles</th>
+                    <td>1</td>
+                </tr>
+            `;
       }
     </script>
   </body>
