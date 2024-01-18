@@ -1,4 +1,6 @@
 from django.shortcuts import render
+# from pyrebase_settings import db, authw
+from django.shortcuts import render
 import pyrebase
 
 config={
@@ -12,7 +14,11 @@ config={
 }
 firebase=pyrebase.initialize_app(config)
 auth = firebase.auth()
-database = firebase.database(auth)
+database = firebase.database()
 
 def index(request):
     return render(request, 'index.html')
+
+def get_users(request):
+    users = db.child("users").get()
+    return render(request, 'users.html', {'users': users.val()})
